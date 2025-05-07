@@ -116,4 +116,4 @@ Constructia Thompson:
   
   Inainte de rulare, path-ul trebuie sa fie setat deja la locatia folderului, folosind cd "nume-locatie".
   
-  Python trebuie sa fie instalat pe Windows pentru a putea rula programul, am folosit versiunea 3.13.3 de pe site-ul oficial  https://www.python.org/downloads/macos/ .
+
