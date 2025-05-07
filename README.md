@@ -27,32 +27,51 @@
   Astfel din (a|b)*c obtinem a b | * c.
 
 # 2. Constructia NFA cu Thompson:
+  
   Folosim clasa State pentru lista de stari.
   
   Folosim clasa NFA pentru starile de intrare si de accept.
   
 Constructia Thompson:
+    
     Pornind de la regexul in postfix, pentru fiecare token:
+         
          Litera/caracter - > Construim un mini NFA cu doua stari s1 - > (a) -> s2.
+         
          Concatenare .   - > Lipim finalul primului NFA la inceputl celui de-al doilea.  
+         
          Alternare |     - > Cream doua epsilon - legaturi dintr-o stare noua s catre cele doua NFA-uri, apoi doua epsilion legaturi de la capetele lor catre o stare comuna noua a.
+         
          Una sau mai multe repetari +  - > Ca la * dar fara epsilon legatura directa de la s la a. (trebuie sa trecem cel putin o data prin NFA)  
+         
          Steaua lui Kleene *           - > Cream un nou start s si un nou accept a. Din s facem epsilon legaturi catre vechiul start si direct la a.
                                            Din vechiul accept facem epsilon legaturi inapoi la vechiul start si catre noul accept a.
-   Intrebarea ? ( zero sau o aparitie) - > Ca un *, dar fara bucla de reluare: epsilon legatura din noul s direct la a, si din vechiul accept la a.
+         Intrebarea ? ( zero sau o aparitie) - > Ca un *, dar fara bucla de reluare: epsilon legatura din noul s direct la a, si din vechiul accept la a.
+  
   Rezultatul final este un NFA in care: nfa.start e starea initiala a tuturor constructiilor imbinate, iar nfa.accept e starea unica finala.
 
 # 3. Transformare NFA in DFA:
+  
   Se porneste de la multimea epsilon-inchiderii starii initiale a NFA: start_closure = epsilon_closure({ nfa.start })
+  
   Aceasta multime de stari NFA devine prima stare (ID 0) a DFA-ului.
+  
   Tinem o coada de multimi (stari NFA) neexplorate.
+  
   Pentru fiecare multime T (o stare DFA):
+  
       Pentru fiecare simbol din alfabet (simbolurile nenule din NFA):
+      
            Facem: move(T, simbol) - adunam starile la care putem ajunge din T pe acel simbol
+           
            Luam epsilon- inchiderea rezultatului: epsilon_closure(...) - > obtinem multimea U
+           
            Daca U nu e deja mapata la o stare DFA, o adaugam cu urmatorul ID liber
+           
            Legam tranzitia DFA: (ID_T, simbol) - > ID_U
+  
   Orice multime care contine starea de accept NFA devine stare de accept DFA.
+ 
  Rezultatul este un obiect DFA cu: un start unic, tranzitii (stare_DFA, simbol) - > stare_DFA, o multime de stari de accept, un set complet de stari (toate multimile generate).
 
  # 4. Convertirea intr-un config de fisier JSON
