@@ -29,10 +29,9 @@
    python regex_to_dfa.py tests.json
 On Windows you can also run:
 
-bash
-Copy
-Edit
 py regex_to_dfa.py tests.json
+
+
 Observe per-suite output:
 
 Suite name
@@ -41,42 +40,36 @@ Original regex
 
 Each test input → expected vs. actual result
 
-Implementation Decisions
+###Implementation Decisions
 No external libraries for regex or automata—everything is handwritten using only Python’s stdlib.
 
-Parser:
+##Parser:
 
 Shunting‐Yard algorithm to convert infix → postfix
 
 Implicit concatenation is made explicit with operator .
 
-NFA:
+##NFA:
 
 Thompson’s construction
 
 ε-transitions represented by the empty string ''
 
-DFA:
+##DFA:
 
 Subset construction (ε-closure + move)
 
 States numbered in order of discovery
 
-Simulation & Validation:
+##Simulation & Validation:
 
 DFA simulator walks transitions, checks final state label
 
 Validator enforces exactly one start, valid symbols, no duplicate transitions
 
-Optional features not implemented:
 
-DFA minimization
+##Code organization
 
-Extensive error‐reporting for malformed regex
+All functionality lives in regex_to_dfa.py for simplicity.
 
-Code organization
 
-All functionality lives in regex_to_dfa.py for simplicity
-
-Copy
-Edit
