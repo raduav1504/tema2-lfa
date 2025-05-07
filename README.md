@@ -3,21 +3,34 @@
 ## Structura proiectului :  
 
 # 1. regex_to_postfix cu Shunting-Yard: 
+ 
  *, +, ? au cea mai mare precedenta
+ 
  Concatenarea cu .
+ 
  Alternarea cu | cu cea mai mica precedenta
+ 
  La intrare avem sirul regex in infix, cum ar fi (a|b)*c
+  
   Adaugam concatenarea, astfel ab devine a.b , )( devine ).( s.a.m.d.
+  
   Parcurgem caracterele cu o stiva de operatori si un output list.
+  
       Daca e litera, o trimitem in output.
+      
       Daca e operator, il comparam cu varful stivei, scoatem operatori cu precedenta mai mare sau egala si impingem noul operator.
+      
       Daca e ( , punem in stiva; daca e ), despachetam pana la (.
+  
   La final, golim stiva in output.
+  
   Astfel din (a|b)*c obtinem a b | * c.
 
 # 2. Constructia NFA cu Thompson:
   Folosim clasa State pentru lista de stari.
+  
   Folosim clasa NFA pentru starile de intrare si de accept.
+  
 Constructia Thompson:
     Pornind de la regexul in postfix, pentru fiecare token:
          Litera/caracter - > Construim un mini NFA cu doua stari s1 - > (a) -> s2.
