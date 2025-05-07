@@ -1,6 +1,6 @@
 ### tema2-lfa
 
-## Structura proiectului : 
+## Structura proiectului :  
 
 # 1. regex_to_postfix cu Shunting-Yard:
  *, +, ? au cea mai mare precedenta
