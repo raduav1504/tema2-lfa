@@ -2,7 +2,7 @@
 
 ## Structura proiectului :  
 
-# 1. regex_to_postfix cu Shunting-Yard:
+# 1. regex_to_postfix cu Shunting-Yard: 
  *, +, ? au cea mai mare precedenta
  Concatenarea cu .
  Alternarea cu | cu cea mai mica precedenta
