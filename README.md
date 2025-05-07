@@ -75,23 +75,37 @@ Constructia Thompson:
  Rezultatul este un obiect DFA cu: un start unic, tranzitii (stare_DFA, simbol) - > stare_DFA, o multime de stari de accept, un set complet de stari (toate multimile generate).
 
  # 4. Convertirea intr-un config de fisier JSON
+   
    Transformam DFA-ul intern la structura de date "config" pe care o foloseste validatorul din tema1.
+  
    Acesta produce : lista tuturor simbolurilor pe care DFA-ul le foloseste in ordine sortata (alfabet)
+                    
                     lista tuturor starilor (ID-uri ca siruri)
+                    
                     marcaje pentru fiecare set de etichete, S daca e stare de inceput/start, F pentru final/accept.
+                    
                     o lista de triple (src, simbol, dst) toate convertite in siruri, cum cerea tema1 (tranzitii).
 
 # 5. Validarea structurii
+
   Verificam corectitudinea configului inainte de a-l simula.
+     
       - Cautam sa fie o singura stare marcata cu S.
+     
       - Starea sursa si destinatie sa fie declarate in stari.
+      
       - Functionalitatea DFA: nu exista doua tranzitii (stare, simbol) diferite in lista (nondeterminism).
+  
   Daca oricare din aceste reguli e incalcata, sa intoarce False + lista de erori.
 
 # 6. Simulare pe input 
+
   Construim tabele de tranzitii si formam un dictionar (stare, simbol) - > stare.
+  
   Gasim starea de start marcata cu S.
+  
   Parcurgem fiecare caracter c din sir_input. Daca c nu e in alfabet, returnam False. Cautam (curr_state, c) in tranzitii. Daca nu exista, returnam False. Mergem in curr_state = tabela[(curr_state, c)].
+  
   Daca starea curenta are eticheta F, accepta (True) sau respinge (False).
 
   Daca pentru un test string rezultatul iese cum ne asteptam, se afiseaza OK. Altfel, se afiseaza FAIL.
@@ -99,5 +113,7 @@ Constructia Thompson:
   ## Rularea codului:
 
   Se pun tests.json si regex_to_dfa.py in acelasi folder, dupa care se ruleaza din PowerShell, folosind comanda python regex_to_dfa tests.json. 
+  
   Inainte de rulare, path-ul trebuie sa fie setat deja la locatia folderului, folosind cd "nume-locatie".
+  
   Python trebuie sa fie instalat pe Windows pentru a putea rula programul, am folosit versiunea 3.13.3 de pe site-ul oficial  https://www.python.org/downloads/macos/ .
