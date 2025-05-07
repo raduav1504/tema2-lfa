@@ -6,6 +6,7 @@
  *, +, ? au cea mai mare precedenta
  Concatenarea cu .
  Alternarea cu | cu cea mai mica precedenta
+ 
  La intrare avem sirul regex in infix, cum ar fi (a|b)*c
   Adaugam concatenarea, astfel ab devine a.b , )( devine ).( s.a.m.d.
   Parcurgem caracterele cu o stiva de operatori si un output list.
