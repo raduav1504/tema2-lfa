@@ -10,10 +10,7 @@
   - Validates and simulates the DFA against test cases  
 - **tests.json**  
   JSON file with ≥20 test suites  
-- **.gitignore**  
-  Ignore rules for Python artifacts and virtual environments  
-- **README.md**  
-  This document
+ 
 
 ---
 
