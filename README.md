@@ -18,7 +18,7 @@
 
 ### Prerequisites
 
-- Python 3.x (no external packages required)
+- Python 3.x 
 
 ### Running
 
